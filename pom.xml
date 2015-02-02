@@ -15,7 +15,8 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.wso2</groupId>
@@ -58,24 +59,14 @@
             </build>
         </profile>
         <profile>
-            <id>core</id>
+            <id>community</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>components</module>
-                <module>features</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>community</id>
-            <modules>
-                <module>components</module>
-                <module>jaggery-extensions</module>
-                <module>features</module>
-                <module>server/p2-profile-gen</module>
-                <module>server/distribution</module>
-                <module>server/integration</module>
+                <module>modules/p2-profile-gen</module>
+                <module>modules/distribution</module>
+                <module>modules/integration</module>
             </modules>
         </profile>
     </profiles>
@@ -261,8 +252,8 @@
     <scm>
         <connection>scm:git:https://github.com/wso2/jaggery.git</connection>
         <developerConnection>scm:git:https://github.com/wso2/jaggery.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     <repositories>
         <repository>
             <id>wso2-nexus</id>
