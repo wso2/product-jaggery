@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jaggeryjs</groupId>
-    <artifactId>jaggery-parent</artifactId>
+    <artifactId>product-jaggery-parent</artifactId>
     <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>jaggeryjs - Parent</name>
