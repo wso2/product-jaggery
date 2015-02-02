@@ -1,0 +1,10 @@
+<%
+var caramel;
+	caramel = require('caramel');
+	caramel.render({
+		'title': {text :'About Jaggery'},
+		'body' : {},
+		'nav'  : {currentPage:'about'},
+		'sidebar' : {}
+	});
+%>

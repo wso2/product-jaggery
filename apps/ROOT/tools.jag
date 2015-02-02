@@ -1,0 +1,10 @@
+<%
+var caramel;
+	caramel = require('caramel');
+	caramel.render({
+		'title': {text :'Tools'},
+		'body' : {},
+		'nav'  : {currentPage:'tools'},
+		'sidebar' : {}
+	});
+%>
