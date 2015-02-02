@@ -35,7 +35,7 @@
                         <property>
                             <name>carbon.zip</name>
                             <value>
-                                ${basedir}/../../distribution/target/jaggery-${project.version}.zip
+                                ${basedir}/../../distribution/target/jaggery-${jaggery.product.version}.zip
                             </value>
                         </property>
                         <property>
@@ -97,7 +97,7 @@
                                 <artifactItem>
                                     <groupId>org.jaggeryjs</groupId>
                                     <artifactId>jaggery</artifactId>
-                                    <version>${project.version}</version>
+                                    <version>${jaggery.product.version}</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${basedir}/target/tobeCopied/</outputDirectory>
@@ -134,7 +134,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/wso2as-${project.version}/repository/resources/security/
+                                        ${basedir}/target/tobeCopied/jaggery-${jaggery.product.version}/carbon/repository/resources/security/
                                     </directory>
                                     <includes>
                                         <include>**/*.jks</include>
@@ -155,7 +155,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/wso2as-${project.version}/repository/resources/security/
+                                        ${basedir}/target/tobeCopied/jaggery-${jaggery.product.version}/carbon/repository/resources/security/
                                     </directory>
                                     <includes>
                                         <include>**/*.jks</include>
@@ -176,7 +176,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/wso2as-${project.version}/repository/conf/axis2/
+                                        ${basedir}/target/tobeCopied/jaggery-${jaggery.product.version}/carbon/repository/conf/axis2/
                                     </directory>
                                     <includes>
                                         <include>**/*.xml</include>
@@ -197,7 +197,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/target/tobeCopied/jaggery-${project.version}/repository/deployment/client/modules
+                                        ${basedir}/target/tobeCopied/jaggery-${jaggery.product.version}/carbon/repository/deployment/client/modules
                                     </directory>
                                     <includes>
                                         <include>**/*.mar</include>
@@ -227,7 +227,6 @@
         <dependency>
             <groupId>org.jaggeryjs</groupId>
             <artifactId>org.jaggeryjs.integration.common.utils</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.automation</groupId>

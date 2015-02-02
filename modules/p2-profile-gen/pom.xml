@@ -80,10 +80,10 @@
                                     <publishArtifactRepository>true</publishArtifactRepository>
                                     <featureArtifacts>
                                         <featureArtifactDef>
-                                            org.jaggeryjs:org.jaggeryjs.feature:${project.version}
+                                            org.jaggeryjs:org.jaggeryjs.feature:${jaggery.version}
                                         </featureArtifactDef>
                                         <featureArtifactDef>
-                                            org.jaggeryjs:org.jaggeryjs.admin.styles.feature:${project.version}
+                                            org.jaggeryjs:org.jaggeryjs.admin.styles.feature:${jaggery.product.version}
                                         </featureArtifactDef>
                                         <featureArtifactDef>
                                             org.jaggeryjs.modules:caramel.feature:${caramel.module.version}
@@ -113,7 +113,8 @@
                                         </featureArtifactDef>
                                         <featureArtifactDef>org.jaggeryjs.modules:ws.feature:${ws.module.version}
                                         </featureArtifactDef>
-                                        <featureArtifactDef>org.jaggeryjs.modules:jaggery-test.feature:${jaggery-tests.module.version}
+                                        <featureArtifactDef>
+                                            org.jaggeryjs.modules:jaggery-test.feature:${jaggery-tests.module.version}
                                         </featureArtifactDef>
                                         <featureArtifactDef>org.jaggeryjs.modules:sso.feature:${sso.module.version}
                                         </featureArtifactDef>
@@ -144,11 +145,11 @@
                                     <features>
                                         <feature>
                                             <id>org.jaggeryjs.feature.group</id>
-                                            <version>${project.version}</version>
+                                            <version>${jaggery.version}</version>
                                         </feature>
                                         <feature>
                                             <id>org.wso2.jaggery.styles.feature.group</id>
-                                            <version>${project.version}</version>
+                                            <version>${jaggery.product.version}</version>
                                         </feature>
                                         <feature>
                                             <id>org.jaggeryjs.modules.caramel.feature.group</id>

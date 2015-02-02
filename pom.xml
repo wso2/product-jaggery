@@ -19,13 +19,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.wso2</groupId>
-        <artifactId>wso2</artifactId>
-        <version>1</version>
+        <groupId>org.jaggeryjs</groupId>
+        <artifactId>jaggery-parent</artifactId>
+        <version>0.9.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jaggeryjs</groupId>
     <artifactId>product-jaggery-parent</artifactId>
     <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -64,6 +63,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>components</module>
+                <module>features</module>
                 <module>modules/p2-profile-gen</module>
                 <module>modules/distribution</module>
                 <module>modules/integration</module>
@@ -334,7 +335,6 @@
         <project.scm.id>github-scm</project.scm.id>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!--carbon.platform.version>4.3.0</carbon.platform.version-->
         <carbon.kernel.version>4.3.0</carbon.kernel.version>
         <carbon.registry.version>4.3.0</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.3.0, 4.4.0)</carbon.registry.imp.pkg.version>
@@ -342,7 +342,9 @@
         <carbon.deployment.version>4.3.0</carbon.deployment.version>
 
         <!--This is a locally used value-->
-        <jaggery.deployer.version>0.9.0.ALPHA6</jaggery.deployer.version>
+        <jaggery.version>0.9.0</jaggery.version>
+        <jaggery.product.version>0.9.0-SNAPSHOT</jaggery.product.version>
+        <jaggery.deployer.version>0.9.0</jaggery.deployer.version>
 
         <test.framework.version>4.3.1</test.framework.version>
         <automationutils.version>4.3.0</automationutils.version>
@@ -423,18 +425,18 @@
 
         <!-- jaggery modules -->
         <caramel.module.version>1.0.1</caramel.module.version>
-        <carbon.module.version>1.2.0</carbon.module.version>
-        <email.module.version>1.1.0</email.module.version>
+        <carbon.module.version>1.2.0-SNAPSHOT</carbon.module.version>
+        <email.module.version>1.1.0-SNAPSHOT</email.module.version>
         <handlebars.module.version>1.0.0</handlebars.module.version>
         <markdown.module.version>1.0.0</markdown.module.version>
-        <gadget.module.version>1.1.0</gadget.module.version>
-        <i18n.module.version>1.1.0</i18n.module.version>
-        <oauth.module.version>1.1.0</oauth.module.version>
-        <process.module.version>1.1.0</process.module.version>
-        <uuid.module.version>1.1.0</uuid.module.version>
-        <ws.module.version>1.2.0</ws.module.version>
-        <jaggery-tests.module.version>1.2.0</jaggery-tests.module.version>
-        <sso.module.version>1.0.0</sso.module.version>
+        <gadget.module.version>1.1.0-SNAPSHOT</gadget.module.version>
+        <i18n.module.version>1.1.0-SNAPSHOT</i18n.module.version>
+        <oauth.module.version>1.1.0-SNAPSHOT</oauth.module.version>
+        <process.module.version>1.1.0-SNAPSHOT</process.module.version>
+        <uuid.module.version>1.1.0-SNAPSHOT</uuid.module.version>
+        <ws.module.version>1.2.0-SNAPSHOT</ws.module.version>
+        <jaggery-tests.module.version>1.2.0-SNAPSHOT</jaggery-tests.module.version>
+        <sso.module.version>1.0.0-SNAPSHOT</sso.module.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -920,6 +922,26 @@
                 <artifactId>wso2xfer</artifactId>
                 <version>${xfer.version}</version>
                 <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jaggeryjs</groupId>
+                <artifactId>org.jaggeryjs.jaggery.app.mgt.stub</artifactId>
+                <version>${jaggery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jaggeryjs</groupId>
+                <artifactId>org.jaggeryjs.integration.common.utils</artifactId>
+                <version>${jaggery.product.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jaggeryjs</groupId>
+                <artifactId>org.jaggeryjs.integration.common.clients</artifactId>
+                <version>${jaggery.product.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jaggeryjs</groupId>
+                <artifactId>org.jaggeryjs.admin.styles</artifactId>
+                <version>${jaggery.product.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

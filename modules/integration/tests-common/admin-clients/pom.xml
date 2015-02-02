@@ -28,7 +28,6 @@
         <dependency>
             <groupId>org.jaggeryjs</groupId>
             <artifactId>org.jaggeryjs.jaggery.app.mgt.stub</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!--dependency>
             <groupId>org.wso2.carbon</groupId>
