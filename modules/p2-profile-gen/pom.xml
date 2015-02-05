@@ -83,7 +83,7 @@
                                             org.jaggeryjs:org.jaggeryjs.feature:${jaggery.version}
                                         </featureArtifactDef>
                                         <featureArtifactDef>
-                                            org.jaggeryjs:org.jaggeryjs.admin.styles.feature:${jaggery.product.version}
+                                            org.jaggeryjs:org.jaggeryjs.admin.styles.feature:${product.jaggery.version}
                                         </featureArtifactDef>
                                         <featureArtifactDef>
                                             org.jaggeryjs.modules:caramel.feature:${caramel.module.version}
@@ -149,7 +149,7 @@
                                         </feature>
                                         <feature>
                                             <id>org.wso2.jaggery.styles.feature.group</id>
-                                            <version>${jaggery.product.version}</version>
+                                            <version>${product.jaggery.version}</version>
                                         </feature>
                                         <feature>
                                             <id>org.jaggeryjs.modules.caramel.feature.group</id>
