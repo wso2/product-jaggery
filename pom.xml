@@ -251,8 +251,8 @@
         </pluginManagement>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/wso2/jaggery.git</connection>
-        <developerConnection>scm:git:https://github.com/wso2/jaggery.git</developerConnection>
+        <connection>scm:git:https://github.com/wso2/product-jaggery.git</connection>
+        <developerConnection>scm:git:https://github.com/wso2/product-jaggery.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <repositories>
