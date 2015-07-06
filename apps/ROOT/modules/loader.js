@@ -105,7 +105,7 @@ var loadSections = function(api) {
 	file.open("r");
 
 	var json = parse(file.readAll());
-
+	file.close();
 	return json.sections;
 
 }
@@ -115,6 +115,6 @@ var loadExamples = function(api) {
 	file.open("r");
 
 	var html = file.readAll();
-
+	file.close();
 	return html;
 }
