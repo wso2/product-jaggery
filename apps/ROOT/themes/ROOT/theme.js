@@ -56,6 +56,7 @@ var engine = caramel.engine('handlebars', ( function() {
 							} else {
 								file.open("r");
 								col += file.readAll();
+								file.close();
 							}
 						} else {
 							col += row[key];
