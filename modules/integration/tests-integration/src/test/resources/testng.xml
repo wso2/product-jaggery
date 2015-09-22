@@ -4,8 +4,9 @@
     <parameter name="useDefaultListeners" value="false"/>
 
     <test name="as-integration-pox-security-tests" preserve-order="true" parallel="false">
-    <!--<packages>-->
-        <!--<package name="org.jaggeryjs.integration.tests.aarservice"/>-->
+    <packages>
+        <package name="org.jaggeryjs"/>
+        <package name="org.wso2.jaggery.integration.tests.hostObjects.core"/>
         <!--<package name="org.jaggeryjs.integration.tests.carbonappservice"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.deployedmoduleservice"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.helloworldsampleservice"/>-->
@@ -23,10 +24,12 @@
         <!--<package name="org.jaggeryjs.integration.tests.springservice"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.webapp.*"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.webappsampleservice"/>-->
-    <!--</packages>-->
+    </packages>
 
         <classes>
             <class name="org.jaggeryjs.integration.tests.jaggery.ApplicationObjectTestCase"/>
+
+            <class name="org.wso2.jaggery.integration.tests.JaggeryTestServerManager"/>
             <!--class name="org.jaggeryjs.integration.tests.aarservice.AARServiceTestCase"/-->
             <!--<class name="org.jaggeryjs.integration.tests.rest.test.poxsecurity.POXSecurityVerifyPostMethod"/>-->
         </classes>
