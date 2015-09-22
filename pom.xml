@@ -419,6 +419,10 @@
         <jettison.osgi.version>1.3.4.wso2v1</jettison.osgi.version>
         <solr.wso2.version>1.4.1.wso2v1</solr.wso2.version>
         <xfer.version>3.3.0</xfer.version>
+        <xmlunit.version>1.4</xmlunit.version>
+        <jsonassert.version>1.2.3</jsonassert.version>
+        <integration.framework.version>4.4.0</integration.framework.version>
+        <greenmail.version>1.3.1b</greenmail.version>
 
         <httpcomponents-httpclient.wso2.version>4.1.1-wso2v1</httpcomponents-httpclient.wso2.version>
         <httpcomponents-httpcore.wso2.version>4.1.0-wso2v1</httpcomponents-httpcore.wso2.version>
@@ -942,6 +946,26 @@
                 <groupId>org.jaggeryjs</groupId>
                 <artifactId>org.jaggeryjs.admin.styles</artifactId>
                 <version>${product.jaggery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.icegreen</groupId>
+                <artifactId>greenmail</artifactId>
+                <version>${greenmail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.integration.framework</artifactId>
+                <version>${integration.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.skyscreamer</groupId>
+                <artifactId>jsonassert</artifactId>
+                <version>${jsonassert.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>xmlunit</groupId>
+                <artifactId>xmlunit</artifactId>
+                <version>${xmlunit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
