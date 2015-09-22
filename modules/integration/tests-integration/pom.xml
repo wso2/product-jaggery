@@ -42,6 +42,9 @@
                                 ${basedir}/src/test/resources/
                             </value>
                         </property>
+                        <samples.dir>${basedir}/src/test/resources</samples.dir>
+                        <extracted.dir>jaggery-${project.version}</extracted.dir>
+
                         <property>
                             <name>usedefaultlisteners</name>
                             <value>false</value>
@@ -241,7 +244,27 @@
         <dependency>
             <groupId>org.wso2.xfer</groupId>
             <artifactId>wso2xfer</artifactId>
-            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jaggeryjs</groupId>
+            <artifactId>org.jaggeryjs.integration.common.utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.integration.framework</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
         </dependency>
     </dependencies>
 </project>

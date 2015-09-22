@@ -1,0 +1,4 @@
+<%
+response.addHeader("custom-header", "header1");
+response.addHeader("custom-header", "header2");
+%>
