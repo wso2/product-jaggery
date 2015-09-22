@@ -97,6 +97,11 @@ public class JaggeryTestServerManager extends TestServerManager {
 		destinationPath = computeDestPath(carbonHome, fileName);
 		copySampleFile(sourcePath, destinationPath);
 
+		fileName = "multipleheaders.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
 		fileName = "jsonTest.jag";
 		sourcePath = computeSourcePath(fileName);
 		destinationPath = computeDestPath(carbonHome, fileName);

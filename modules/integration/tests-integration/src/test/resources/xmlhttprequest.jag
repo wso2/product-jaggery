@@ -16,6 +16,12 @@ if (param == "operations") {
     print(", " + xhr.readyState);
     xhr.send();
     print(", " + xhr.readyState);
+} else if (param == "multipleheaders") {
+    var url = 'http://localhost:9763/testapp/multipleheaders.jag';
+    xhr.open("GET", url);
+    xhr.send();
+    var header = xhr.getResponseHeader("custom-header");
+    print("headers: " + header);
 } else {
     xhr.open("GET", "http://localhost:9763/testapp/testhtml.html");
     xhr.send();
