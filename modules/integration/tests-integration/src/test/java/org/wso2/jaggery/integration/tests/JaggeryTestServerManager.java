@@ -266,9 +266,9 @@ public class JaggeryTestServerManager extends TestServerManager {
         copySampleFile(sourcePath, destinationPath);
 
         fileName = "oauth-saml.jag";
-		sourcePath = computeSourcePath(fileName);
-		destinationPath = computeDestPath(carbonHome, fileName);
-		copySampleFile(sourcePath, destinationPath);
+	sourcePath = computeSourcePath(fileName);
+	destinationPath = computeDestPath(carbonHome, fileName);
+	copySampleFile(sourcePath, destinationPath);
         
         //Web Socket object test resources files 
         fileName = "server.jag";
