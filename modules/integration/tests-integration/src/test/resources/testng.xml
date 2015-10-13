@@ -7,6 +7,7 @@
     <packages>
         <package name="org.jaggeryjs"/>
         <package name="org.wso2.jaggery.integration.tests.hostObjects.core"/>
+        <package name="org.wso2.jaggery.integration.tests.samlTokens.core"/>
         <!--<package name="org.jaggeryjs.integration.tests.carbonappservice"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.deployedmoduleservice"/>-->
         <!--<package name="org.jaggeryjs.integration.tests.helloworldsampleservice"/>-->
