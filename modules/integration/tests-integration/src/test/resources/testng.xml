@@ -30,6 +30,7 @@
             <class name="org.jaggeryjs.integration.tests.jaggery.ApplicationObjectTestCase"/>
 
             <class name="org.wso2.jaggery.integration.tests.JaggeryTestServerManager"/>
+            <class name="org.wso2.jaggery.integration.tests.I18NTestCase"/>
             <!--class name="org.jaggeryjs.integration.tests.aarservice.AARServiceTestCase"/-->
             <!--<class name="org.jaggeryjs.integration.tests.rest.test.poxsecurity.POXSecurityVerifyPostMethod"/>-->
         </classes>

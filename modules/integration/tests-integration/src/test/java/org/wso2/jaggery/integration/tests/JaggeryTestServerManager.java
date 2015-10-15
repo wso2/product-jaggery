@@ -271,6 +271,21 @@ public class JaggeryTestServerManager extends TestServerManager {
         destinationPath = computeDestPath(carbonHome, fileName);
         copySampleFile(sourcePath, destinationPath);
         
+		fileName = "i18n.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
+		fileName = "locale_es.json";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
+		fileName = "locale_default.json";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
         fileName = "client.jag";
         sourcePath = computeSourcePath(fileName);
         destinationPath = computeDestPath(carbonHome, fileName);
