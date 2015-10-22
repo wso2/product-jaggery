@@ -1,0 +1,5 @@
+<%
+var param = request.getAllParameters();
+response.status = 200;
+print(stringify(param));
+%>

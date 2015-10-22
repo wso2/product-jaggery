@@ -21,9 +21,7 @@ package org.wso2.jaggery.integration.tests.hostObjects.core;
 import org.testng.annotations.Test;
 import org.wso2.carbon.integration.framework.ClientConnectionUtil;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -200,4 +198,34 @@ public class RequestObjectTestCase {
 
 	}
 
+	@Test(groups = { "jaggery" }, description = "Test request object for parseMultiPart")
+	public void testparseMultiPart(){
+		ClientConnectionUtil.waitForPort(9763);
+		String finalOutput = null;
+		String expectedOutput = null;
+
+		try{
+			URL jaggeryURL = new URL("http://localhost:9763/testapp/multipart.json");
+			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
+			String inputLineExpected;
+			while((inputLineExpected = in.readLine()) != null){
+				expectedOutput = inputLineExpected;
+			}
+
+			jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=getAllParameters");
+			jaggeryServerConnection = jaggeryURL.openConnection();
+			in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
+			String inputLineActual;
+			while((inputLineActual = in.readLine()) != null){
+				finalOutput = inputLineActual;
+			}
+			in.close();
+
+		}catch(IOException e){
+			e.printStackTrace();
+		}finally {
+			assertEquals(finalOutput, expectedOutput);
+		}
+	}
 }
