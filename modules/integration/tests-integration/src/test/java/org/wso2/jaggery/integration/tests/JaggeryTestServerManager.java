@@ -155,6 +155,18 @@ public class JaggeryTestServerManager extends TestServerManager {
 		destinationPath = computeDestPath(carbonHome, fileName);
 		copySampleFile(sourcePath, destinationPath);
 
+		// multipart object
+		fileName = "multipart.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome,fileName);
+		copySampleFile(sourcePath,destinationPath);
+
+		// multipart json file
+		fileName = "multipart.json";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome,fileName);
+		copySampleFile(sourcePath,destinationPath);
+
 		// response object
 		fileName = "response.jag";
 		sourcePath = computeSourcePath(fileName);

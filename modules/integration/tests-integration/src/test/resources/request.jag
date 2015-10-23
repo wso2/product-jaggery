@@ -1,7 +1,7 @@
 <%
 
 var param = request.getParameter('param');
-switch(param) {
+switch (param) {
     case "test":
         print("Param : " + request.getParameter('param'));
         break;
@@ -14,6 +14,40 @@ switch(param) {
         break;
     case "getMappedPath":
         print("getMappedPath : " + request.getMappedPath());
+        break;
+    case "getAllParameters":
+        var url = 'http://localhost:9763/testapp/multipart.jag';
+        var boundary = Math.random().toString().substr(2);
+        var multipart = "";
+        multipart += '--' + boundary + '\r\nContent-Disposition: form-data; name="overview_name"\r\n\r\nLasa\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="overview_description"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="overview_version"\r\n\r\n4\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="images_thumbnail";'
+                + ' filename="24-07-2015"\r\nContent-Type: application/octet-stream\r\n\r\n'
+                + 'TODO : Today\n\nWorking on the Axis2 Services- day 2\nStarts working on Apache'
+                + ' Sparks (Starts on 24-07-2015) - day 1\nStarted reading WSDL - day 1\nStarted'
+                + ' reading SOAP - day 1\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiUsed"\r\n\r\nAPI1\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiVersion"\r\n\r\n1\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiLink"\r\n\r\nwww.xml.com\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiUsed"\r\n\r\nAPI2\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiVersion"\r\n\r\n2\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="apis_apiLink"\r\n\r\nwww.w3.com\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="businessComponent_businessDomain"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="businessComponent_authenticationType"\r\n\r\nNone\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="digitalAssetDetails_publicStashLocation"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="digitalAssetDetails_sandboxURL"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="digitalAssetDetails_wikiLinkWithDetails"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="digitalAssetDetails_try-itLink"\r\n\r\n\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="addNewAssetButton"\r\n\r\nCreate\r\n'
+                + '--' + boundary + '\r\nContent-Disposition: form-data; name="businesscomponent"\r\n\r\nbusinesscomponent\r\n'
+                + '--' + boundary + '--\r\n';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, false);
+        xhr.setRequestHeader("content-type", "multipart/form-data; charset=utf-8; boundary=" + boundary);
+        xhr.send(multipart);
+        print(xhr.responseText);
         break;
     default:
         print("Method : " + request.getMethod());
