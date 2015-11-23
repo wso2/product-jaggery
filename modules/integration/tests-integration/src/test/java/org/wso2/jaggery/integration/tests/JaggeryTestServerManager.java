@@ -167,6 +167,11 @@ public class JaggeryTestServerManager extends TestServerManager {
         destinationPath = computeDestPath(carbonHome, fileName);
         copySampleFile(sourcePath, destinationPath);
 
+        fileName = "cookie.jag";
+        sourcePath = computeSourcePath(fileName);
+        destinationPath = computeDestPath(carbonHome, fileName);
+        copySampleFile(sourcePath, destinationPath);
+
         // application object
         fileName = "application.jag";
         sourcePath = computeSourcePath(fileName);
