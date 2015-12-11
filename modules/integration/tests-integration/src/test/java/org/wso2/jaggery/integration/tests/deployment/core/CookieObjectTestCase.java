@@ -22,23 +22,28 @@ public class CookieObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
 
         String finalOutput = null;
-
+        BufferedReader in = null;
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
+            in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
 
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
-            in.close();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             assertNotNull(finalOutput, "general");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }
@@ -49,23 +54,28 @@ public class CookieObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
 
         String finalOutput = null;
-
+        BufferedReader in = null;
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag?action=noresource");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
+            in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
 
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
-            in.close();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             assertEquals(finalOutput, "false");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }

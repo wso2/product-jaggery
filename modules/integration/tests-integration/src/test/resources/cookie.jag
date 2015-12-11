@@ -2,7 +2,7 @@
 
 var param = request.getParameter('action');
 if (param == "noresource") {
-    var url = 'http://localhost:9764/store/api-docs/bootstrap/test/abc/def.jag';
+    var url = 'http://localhost:9763/store/api-docs/bootstrap/test/abc/def.jag';
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.setRequestHeader("Content-Type", "text/html");
