@@ -300,6 +300,30 @@ public class JaggeryTestServerManager extends TestServerManager {
         sourcePath = computeSourcePath(fileName);
         destinationPath = computeDestPath(carbonHome, fileName);
         copySampleFile(sourcePath, destinationPath);
+
+		//getSession lazy session creation object testcase
+		fileName = "get-lazysessioncreation.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
+		//get- put Session lazy session creation object testcase
+		fileName = "put-get-lazysessioncreation.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
+		//getSession lazy session creation after invalidate session object testcase
+		fileName = "get-lazysessioncreation_afterinvalidate.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
+
+		//put and getSession lazy session creation after invalidate session object testcase
+		fileName = "put-get-lazysessioncreation_afterinvalidate.jag";
+		sourcePath = computeSourcePath(fileName);
+		destinationPath = computeDestPath(carbonHome, fileName);
+		copySampleFile(sourcePath, destinationPath);
         
         //native json object test file
         fileName = "nativejson.jag";
