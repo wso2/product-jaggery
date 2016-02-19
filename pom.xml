@@ -442,6 +442,7 @@
         <ws.module.version>1.4.3</ws.module.version>
         <jaggery-tests.module.version>1.4.3</jaggery-tests.module.version>
         <sso.module.version>1.4.3</sso.module.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>

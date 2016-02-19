@@ -1,0 +1,14 @@
+<%
+var i18n = require("i18n");
+i18n.init(request);
+var test = request.getParameter('test');
+if (test == 'fallback') {
+    print(i18n.localize('goodbay', 'fallback'));
+} else if (test == 'in-json') {
+    print(i18n.localize('greet'));
+} else if (test == 'in-json-default-only') {
+    print(i18n.localize('company'));
+} else if (test == 'not-in-json') {
+    print(i18n.localize('new'));
+}
+%>
