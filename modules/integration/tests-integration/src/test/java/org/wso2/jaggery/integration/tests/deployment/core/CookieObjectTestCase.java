@@ -1,5 +1,23 @@
+/*
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.jaggery.integration.tests.deployment.core;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.testng.annotations.Test;
 import org.wso2.carbon.integration.framework.ClientConnectionUtil;
 
@@ -16,6 +34,9 @@ import static org.testng.Assert.assertNotNull;
  * Test cases for Cookie Object
  */
 public class CookieObjectTestCase {
+
+    private static final Log log = LogFactory.getLog(CookieObjectTestCase.class);
+
     @Test(groups = {"jaggery"},
             description = "Test Cookie object")
     public void testCookie() {
@@ -26,22 +47,17 @@ public class CookieObjectTestCase {
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
-
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
+            finalOutput = in.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
-            assertNotNull(finalOutput, "general");
+            assertNotNull(finalOutput);
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage(), e);
                 }
             }
         }
@@ -53,27 +69,23 @@ public class CookieObjectTestCase {
     public void testCookieNoResource() {
         ClientConnectionUtil.waitForPort(9763);
 
-        String finalOutput = null;
+        String finalOutput = "";
         BufferedReader in = null;
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag?action=noresource");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            finalOutput = in.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             assertEquals(finalOutput, "false");
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage(), e);
                 }
             }
         }

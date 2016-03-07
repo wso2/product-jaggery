@@ -345,7 +345,7 @@
         <!--This is a locally used value-->
         <jaggery.version>0.12.3-SNAPSHOT</jaggery.version>
         <product.jaggery.version>0.9.0-SNAPSHOT</product.jaggery.version>
-        <jaggery.deployer.version>0.12.3-SNAPSHOT</jaggery.deployer.version>
+        <jaggery.deployer.version>0.12.3.SNAPSHOT</jaggery.deployer.version>
 
         <test.framework.version>4.4.2</test.framework.version>
         <automationutils.version>4.4.2</automationutils.version>
