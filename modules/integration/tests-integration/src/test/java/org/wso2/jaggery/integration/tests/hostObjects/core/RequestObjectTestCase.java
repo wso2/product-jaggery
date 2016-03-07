@@ -200,4 +200,31 @@ public class RequestObjectTestCase {
 
 	}
 
+	@Test(groups = { "jaggery" }, description = "Test request object for getAttribute")
+	public void testGetAttribute() {
+		ClientConnectionUtil.waitForPort(9443);
+		BufferedReader in = null;
+		String finalOutput = null;
+
+		try {
+			URL jaggeryURL = new URL("https://localhost:9443/testapp/request.jag?param=getAttribute");
+			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
+			in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
+
+			String inputLine;
+			while ((inputLine = in.readLine()) != null) {
+				finalOutput = inputLine;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			assertEquals(finalOutput, "getAttribute : TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {}
+			}
+		}
+	}
+
 }
