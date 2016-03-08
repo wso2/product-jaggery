@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,10 +51,7 @@ public class SAMLTokenTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            finalOutput = in.readLine();
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -72,10 +69,7 @@ public class SAMLTokenTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            finalOutput = in.readLine();
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -93,10 +87,7 @@ public class SAMLTokenTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            finalOutput = in.readLine();
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
@@ -114,10 +105,7 @@ public class SAMLTokenTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
-            }
+            finalOutput = in.readLine();
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);

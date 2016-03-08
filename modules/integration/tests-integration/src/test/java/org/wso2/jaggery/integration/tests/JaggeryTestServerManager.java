@@ -1,19 +1,17 @@
 /*
- *  Copyright (c) 2005-2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- *  WSO2 Inc. licenses this file to you under the Apache License,
- *  Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.wso2.jaggery.integration.tests;
@@ -43,15 +41,12 @@ public class JaggeryTestServerManager extends TestServerManager {
     @Override
     @BeforeSuite(timeOut = 300000)
     public String startServer() throws IOException {
-
-        String carbonHome = super.startServerInCarbonFolder(
-                JAGGERY_ADMIN_CONTEXT, JAGGERY_SERVER_SCRIPT_NAME);
+        String carbonHome = super.startServerInCarbonFolder(JAGGERY_ADMIN_CONTEXT, JAGGERY_SERVER_SCRIPT_NAME);
         String carbonFolder = "";
         if (carbonHome != null) {
             carbonFolder = carbonHome + File.separator + "carbon";
         }
         System.setProperty("carbon.home", carbonFolder);
-
         return carbonFolder;
     }
 
@@ -62,28 +57,20 @@ public class JaggeryTestServerManager extends TestServerManager {
     }
 
     protected void copyArtifacts(String carbonHome) throws IOException {
-
         String secVerifierDir = System.getProperty("sec.verifier.dir");
-        File srcFile = new File(secVerifierDir + File.separator
-                + "SecVerifier.aar");
-
+        File srcFile = new File(secVerifierDir + File.separator + "SecVerifier.aar");
         String deploymentPath = carbonHome + File.separator + "axis2services";
         File depFile = new File(deploymentPath);
         if (!depFile.exists() && !depFile.mkdir()) {
-            System.err.println("Error while creating the deployment folder : "
-                    + deploymentPath);
+            System.err.println("Error while creating the deployment folder : " + deploymentPath);
         }
-        File dstFile = new File(depFile.getAbsolutePath() + File.separator
-                + "SecVerifier.aar");
+        File dstFile = new File(depFile.getAbsolutePath() + File.separator + "SecVerifier.aar");
         try {
-            log.info("Copying " + srcFile.getAbsolutePath() + " => "
-                    + dstFile.getAbsolutePath());
+            log.info("Copying " + srcFile.getAbsolutePath() + " => " + dstFile.getAbsolutePath());
             FileManipulator.copyFile(srcFile, dstFile);
         } catch (IOException e) {
-            log.error("Error while creating the deployment folder : "
-                    + deploymentPath);
+            log.error("Error while creating the deployment folder : " + deploymentPath);
         }
-
         String[] fileNames = {"jaggery.conf", "testhtml.html", "multipleheaders.jag", "jsonTest.jag", "email.jag",
                 "database.jag", "feed.jag", "file.jag", "testfile.txt", "log.jag", "wsrequest.jag", "request.jag",
                 "response.jag", "session.jag", "cookie.jag", "application.jag", "xmlhttprequest.jag", "syntax.jag",
@@ -92,14 +79,13 @@ public class JaggeryTestServerManager extends TestServerManager {
                 "oauth-saml.jag", "server.jag", "client.jag", "clientTester.jag", "client.html", "process.jag",
                 "nativejson.jag"};
         // copy files
-        for (String fileName: fileNames) {
+        for (String fileName : fileNames) {
             copyFile(fileName, carbonHome);
         }
-
         // jaggery configuration files
         String[] jagFileNames = {"init.js", "jaggery.conf"};
         // copy files
-        for (String fileName: jagFileNames) {
+        for (String fileName : jagFileNames) {
             copyConfigFile(fileName, carbonHome);
         }
     }
@@ -137,23 +123,19 @@ public class JaggeryTestServerManager extends TestServerManager {
     }
 
     private String computeDestPath(String carbonHome, String fileName) {
-        String deploymentPath = carbonHome + File.separator + "apps"
-                + File.separator + "testapp";
+        String deploymentPath = carbonHome + File.separator + "apps" + File.separator + "testapp";
         File depFile = new File(deploymentPath);
         if (!depFile.exists() && !depFile.mkdir()) {
-            log.error("Error while creating the deployment folder : "
-                    + deploymentPath);
+            log.error("Error while creating the deployment folder : " + deploymentPath);
         }
         return deploymentPath + File.separator + fileName;
     }
 
     private String computeDestPath(String carbonHome, String Appname, String fileName) {
-        String deploymentPath = carbonHome + File.separator + "apps"
-                + File.separator + Appname + File.separator;
+        String deploymentPath = carbonHome + File.separator + "apps" + File.separator + Appname + File.separator;
         File depFile = new File(deploymentPath);
         if (!depFile.exists() && !depFile.mkdir()) {
-            log.error("Error while creating the deployment folder : "
-                    + deploymentPath);
+            log.error("Error while creating the deployment folder : " + deploymentPath);
         }
         return deploymentPath + File.separator + fileName;
     }
