@@ -42,113 +42,88 @@ public class SAMLTokenTestCase {
         return out;
     }
 
-    @Test(groups = {"jaggery"},
-            description = "Test OAuth access token")
+    @Test(groups = {"jaggery"}, description = "Test OAuth access token")
     public void testOauthAccessToken() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = null;
-
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=1");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertNotNull(finalOutput, "Token cannot be null");
         }
-
     }
 
-    @Test(groups = {"jaggery"},
-            description = "Test OAuth refresh token")
+    @Test(groups = {"jaggery"}, description = "Test OAuth refresh token")
     public void testOauthRefreshToken() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = null;
-
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=2");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertNotNull(finalOutput, "Output cannot be null");
         }
-
     }
 
-    @Test(groups = {"jaggery"},
-            description = "Test OAuth token type")
+    @Test(groups = {"jaggery"}, description = "Test OAuth token type")
     public void testOauthTokenType() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = null;
-
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=3");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertEquals(finalOutput, "Bearer");
         }
-
     }
 
-    @Test(groups = {"jaggery"},
-            description = "Test OAuth expires in time")
+    @Test(groups = {"jaggery"}, description = "Test OAuth expires in time")
     public void testOauthExpiresIn() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = null;
-
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=4");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     jaggeryServerConnection.getInputStream()));
-
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 finalOutput = inputLine;
             }
-
             in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertEquals(finalOutput, "3600");
         }
-
     }
-
 
 }

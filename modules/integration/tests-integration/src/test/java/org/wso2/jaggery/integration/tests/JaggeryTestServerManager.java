@@ -80,257 +80,40 @@ public class JaggeryTestServerManager extends TestServerManager {
                     + dstFile.getAbsolutePath());
             FileManipulator.copyFile(srcFile, dstFile);
         } catch (IOException e) {
-            e.printStackTrace();
             log.error("Error while creating the deployment folder : "
                     + deploymentPath);
         }
 
-        // Copying jaggery configuration file
-        String fileName = "jaggery.conf";
+        String[] fileNames = {"jaggery.conf", "testhtml.html", "multipleheaders.jag", "jsonTest.jag", "email.jag",
+                "database.jag", "feed.jag", "file.jag", "testfile.txt", "log.jag", "wsrequest.jag", "request.jag",
+                "response.jag", "session.jag", "cookie.jag", "application.jag", "xmlhttprequest.jag", "syntax.jag",
+                "require.jag", "put.jag", "post.jag", "get.jag", "delet.jag", "uri.jag", "inculde.jag", "entry.jag",
+                "wsstub.jag", "metadata.jag", "resources.jag", "collection.jag", "oauth.jag", "oauth-linkedin.jag",
+                "oauth-saml.jag", "server.jag", "client.jag", "clientTester.jag", "client.html", "process.jag",
+                "nativejson.jag"};
+        // copy files
+        for (String fileName: fileNames) {
+            copyFile(fileName, carbonHome);
+        }
+
+        // jaggery configuration files
+        String[] jagFileNames = {"init.js", "jaggery.conf"};
+        // copy files
+        for (String fileName: jagFileNames) {
+            copyConfigFile(fileName, carbonHome);
+        }
+    }
+
+    private void copyFile(String fileName, String carbonHome) {
         String sourcePath = computeSourcePath(fileName);
         String destinationPath = computeDestPath(carbonHome, fileName);
         copySampleFile(sourcePath, destinationPath);
+    }
 
-        // test html file
-        fileName = "testhtml.html";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
+    private void copyConfigFile(String fileName, String carbonHome) {
+        String sourcePath = computeSourcePath(JAGGERY_TEST_APP, fileName);
+        String destinationPath = computeDestPath(carbonHome, JAGGERY_TEST_APP, fileName);
         copySampleFile(sourcePath, destinationPath);
-
-        fileName = "multipleheaders.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "jsonTest.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // email host object
-        fileName = "email.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // database host object
-        fileName = "database.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // org.jaggeryjs.hostobjects.feed1 host object
-        fileName = "feed.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // file host object
-        fileName = "file.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // sample file to read
-        fileName = "testfile.txt";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // log host object
-        fileName = "log.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // wsrequest host object
-        fileName = "wsrequest.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // request object
-        fileName = "request.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // response object
-        fileName = "response.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // session object
-        fileName = "session.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "cookie.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // application object
-        fileName = "application.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // xmlhttprequest object
-        fileName = "xmlhttprequest.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // jaggery syntax checker
-        fileName = "syntax.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // require object
-        fileName = "require.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        // Http client test files
-        fileName = "put.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "post.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "get.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "delet.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //uri object
-        fileName = "uri.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //inculde object
-        fileName = "inculde.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //entry object
-        fileName = "entry.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //wsstub object
-        fileName = "wsstub.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //metadata object
-        fileName = "metadata.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //resources object
-        fileName = "resources.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //collection object
-        fileName = "collection.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //oauth object with twitter api
-        fileName = "oauth.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "oauth-linkedin.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "oauth-saml.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //Web Socket object test resources files 
-        fileName = "server.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "client.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "clientTester.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //frontend js jquery file 
-        /*
-        fileName = "jquery-1.8.3.min.js";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-        */
-
-        //front html
-        fileName = "client.html";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //process object test file
-        fileName = "process.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //native json object test file
-        fileName = "nativejson.jag";
-        sourcePath = computeSourcePath(fileName);
-        destinationPath = computeDestPath(carbonHome, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        //Build testapp2 for testing 
-
-        // Copying jaggery configuration file
-        fileName = "init.js";
-        sourcePath = computeSourcePath(JAGGERY_TEST_APP, fileName);
-        destinationPath = computeDestPath(carbonHome, JAGGERY_TEST_APP, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-        fileName = "jaggery.conf";
-        sourcePath = computeSourcePath(JAGGERY_TEST_APP, fileName);
-        destinationPath = computeDestPath(carbonHome, JAGGERY_TEST_APP, fileName);
-        copySampleFile(sourcePath, destinationPath);
-
-
     }
 
     private void copySampleFile(String sourcePath, String destPath) {

@@ -42,131 +42,100 @@ public class RequestObjectTestCase {
 	@Test(groups = { "jaggery" }, description = "Test request object")
 	public void testRequest() {
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
 		try {
 			URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=test");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					jaggeryServerConnection.getInputStream()));
-
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			assertNotNull(finalOutput, "Result cannot be null");
 		}
-
 	}
 
 	@Test(groups = { "jaggery" }, description = "Test request object params")
 	public void testReadRequestParams() {
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
 		try {
 			URL jaggeryURL = new URL(
 					"http://localhost:9763/testapp/request.jag?param=test");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					jaggeryServerConnection.getInputStream()));
-
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			assertEquals(finalOutput, "Param : test");
 		}
-
 	}
 	
 	@Test(groups = { "jaggery" }, description = "Test request object for Local")
 	public void testReadLocalAllRequestParams() {
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
 		try {
 			URL jaggeryURL = new URL(
 					"http://localhost:9763/testapp/request.jag?param=getAllLocales");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					jaggeryServerConnection.getInputStream()));
-
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			assertEquals(finalOutput, "getAllLocales true");
 		}
-
 	}
 		
 		@Test(groups = { "jaggery" }, description = "Test request object for Local")
 		public void testReadLocalRequestParams() {
 			ClientConnectionUtil.waitForPort(9763);
-
 			String finalOutput = null;
-
 			try {
-				URL jaggeryURL = new URL(
-						"http://localhost:9763/testapp/request.jag?param=getLocale");
+				URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=getLocale");
 				URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-				BufferedReader in = new BufferedReader(new InputStreamReader(
-						jaggeryServerConnection.getInputStream()));
-
+				BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 				String inputLine;
 				while ((inputLine = in.readLine()) != null) {
 					finalOutput = inputLine;
 				}
-
 				in.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			} finally {
 				assertEquals(finalOutput, "en");
 			}
-
 		}
 
 	@Test(groups = { "jaggery" }, description = "Test request object ")
 	public void testReadRequest() {
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
 		try {
-			URL jaggeryURL = new URL(
-					"http://localhost:9763/testapp/request.jag?test=hi");
+			URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?test=hi");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					jaggeryServerConnection.getInputStream()));
-
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-			
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			assertEquals(
 					finalOutput,
@@ -174,34 +143,26 @@ public class RequestObjectTestCase {
 					+" URI : /testapp/request.jag, URL : http://localhost:9763/testapp/request.jag,"
 					+" LocalPort : 9763, ContentLength : -1, ContextPath : /testapp");
 		}
-
 	}
 	
 	@Test(groups = { "jaggery" }, description = "Test request object for getMappedPath")
 	public void testgetMappedPathRequestParams() {
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
 		try {
-			URL jaggeryURL = new URL(
-					"http://localhost:9763/testapp/request.jag?param=getMappedPath");
+			URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=getMappedPath");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					jaggeryServerConnection.getInputStream()));
-
+			BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			assertEquals(finalOutput, "getMappedPath : /request.jag");
 		}
-
 	}
 
 	@Test(groups = { "jaggery" }, description = "Test request object for getAttribute")

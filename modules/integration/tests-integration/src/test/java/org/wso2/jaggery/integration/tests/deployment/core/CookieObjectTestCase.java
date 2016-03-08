@@ -37,11 +37,9 @@ public class CookieObjectTestCase {
 
     private static final Log log = LogFactory.getLog(CookieObjectTestCase.class);
 
-    @Test(groups = {"jaggery"},
-            description = "Test Cookie object")
+    @Test(groups = {"jaggery"}, description = "Test Cookie object")
     public void testCookie() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = null;
         BufferedReader in = null;
         try {
@@ -61,21 +59,17 @@ public class CookieObjectTestCase {
                 }
             }
         }
-
     }
 
-    @Test(groups = {"jaggery"},
-            description = "Test cookie object no resource")
+    @Test(groups = {"jaggery"}, description = "Test cookie object no resource")
     public void testCookieNoResource() {
         ClientConnectionUtil.waitForPort(9763);
-
         String finalOutput = "";
         BufferedReader in = null;
         try {
             URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag?action=noresource");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
