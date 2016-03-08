@@ -32,8 +32,7 @@ import java.io.IOException;
  */
 public class JaggeryTestServerManager extends TestServerManager {
 
-    private static final Log log = LogFactory
-            .getLog(JaggeryTestServerManager.class);
+    private static final Log log = LogFactory.getLog(JaggeryTestServerManager.class);
     private static final String JAGGERY_ADMIN_CONTEXT = "admin";
     private static final String JAGGERY_SERVER_SCRIPT_NAME = "server";
     private static final String JAGGERY_TEST_APP = "testapp2";
@@ -69,7 +68,7 @@ public class JaggeryTestServerManager extends TestServerManager {
             log.info("Copying " + srcFile.getAbsolutePath() + " => " + dstFile.getAbsolutePath());
             FileManipulator.copyFile(srcFile, dstFile);
         } catch (IOException e) {
-            log.error("Error while creating the deployment folder : " + deploymentPath);
+            log.error("Error while creating the deployment folder : " + deploymentPath, e);
         }
         String[] fileNames = {"jaggery.conf", "testhtml.html", "multipleheaders.jag", "jsonTest.jag", "email.jag",
                 "database.jag", "feed.jag", "file.jag", "testfile.txt", "log.jag", "wsrequest.jag", "request.jag",
