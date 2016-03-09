@@ -42,6 +42,7 @@ public class JaggeryIntegrationTest {
     protected String sessionCookie;
     protected String backendURL;
     protected String webAppURL;
+    protected String webAppURLHttps;
     protected SecurityAdminServiceClient securityAdminServiceClient;
 
     protected void init() throws Exception {
@@ -52,6 +53,7 @@ public class JaggeryIntegrationTest {
         sessionCookie = new LoginLogoutClient(asServer).login();
         backendURL = asServer.getContextUrls().getBackEndUrl();
         webAppURL = asServer.getContextUrls().getWebAppURL();
+        webAppURLHttps = asServer.getContextUrls().getWebAppURLHttps();
     }
 
     protected void init(TestUserMode testUserMode) throws Exception {
@@ -59,6 +61,7 @@ public class JaggeryIntegrationTest {
         //  sessionCookie = asServer.login();
         backendURL = asServer.getContextUrls().getBackEndUrl();
         webAppURL = asServer.getContextUrls().getWebAppURL();
+        webAppURLHttps = asServer.getContextUrls().getWebAppURLHttps();
     }
 
     protected void init(String domainKey, String userKey) throws Exception {
@@ -66,6 +69,7 @@ public class JaggeryIntegrationTest {
         //   sessionCookie = asServer.login();
         backendURL = asServer.getContextUrls().getBackEndUrl();
         webAppURL = asServer.getContextUrls().getWebAppURL();
+        webAppURLHttps = asServer.getContextUrls().getWebAppURLHttps();
     }
 
     protected String getServiceUrl(String serviceName) throws XPathExpressionException {

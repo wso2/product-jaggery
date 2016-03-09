@@ -18,6 +18,8 @@ package org.wso2.jaggery.integration.tests.hostObjects.core;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.integration.common.utils.JaggeryIntegrationTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.integration.framework.ClientConnectionUtil;
 
@@ -33,16 +35,25 @@ import static org.testng.Assert.assertNotNull;
 /**
  * Test cases for Request Object
  */
-public class RequestObjectTestCase {
+public class RequestObjectTestCase extends JaggeryIntegrationTest {
 
     private static final Log log = LogFactory.getLog(RequestObjectTestCase.class);
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp(){
+        try {
+            init();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 
     @Test(groups = {"jaggery"}, description = "Test request object")
     public void testRequest() {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=test");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?param=test");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -59,8 +70,7 @@ public class RequestObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL(
-                    "http://localhost:9763/testapp/request.jag?param=test");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?param=test");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -77,8 +87,7 @@ public class RequestObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL(
-                    "http://localhost:9763/testapp/request.jag?param=getAllLocales");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?param=getAllLocales");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -95,7 +104,7 @@ public class RequestObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=getLocale");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?param=getLocale");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -112,7 +121,7 @@ public class RequestObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?test=hi");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?test=hi");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -133,7 +142,7 @@ public class RequestObjectTestCase {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/request.jag?param=getMappedPath");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/request.jag?param=getMappedPath");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -151,7 +160,7 @@ public class RequestObjectTestCase {
         BufferedReader in = null;
         String finalOutput = null;
         try {
-            URL jaggeryURL = new URL("https://localhost:9443/testapp/request.jag?param=getAttribute");
+            URL jaggeryURL = new URL(webAppURLHttps + "/testapp/request.jag?param=getAttribute");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -163,6 +172,7 @@ public class RequestObjectTestCase {
                 try {
                     in.close();
                 } catch (IOException e) {
+                    log.error(e.getMessage(), e);
                 }
             }
         }

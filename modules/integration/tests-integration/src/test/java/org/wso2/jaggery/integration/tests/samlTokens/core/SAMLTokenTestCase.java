@@ -18,6 +18,8 @@ package org.wso2.jaggery.integration.tests.samlTokens.core;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.integration.common.utils.JaggeryIntegrationTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.integration.framework.ClientConnectionUtil;
 
@@ -33,30 +35,40 @@ import static org.testng.Assert.assertNotNull;
 /**
  * Test cases for OAuth SAML Object
  */
-public class SAMLTokenTestCase {
+public class SAMLTokenTestCase extends JaggeryIntegrationTest {
 
     private static final Log log = LogFactory.getLog(SAMLTokenTestCase.class);
 
-    public boolean testIsOnline() {
-        boolean out = false;
-        return out;
+    @BeforeClass(alwaysRun = true)
+    public void setUp(){
+        try {
+            init();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     @Test(groups = {"jaggery"}, description = "Test OAuth access token")
     public void testOauthAccessToken() {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
+        BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=1");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/oauth-saml.jag?param=1");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
-            in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertNotNull(finalOutput, "Token cannot be null");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
         }
     }
 
@@ -64,17 +76,23 @@ public class SAMLTokenTestCase {
     public void testOauthRefreshToken() {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
+        BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=2");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/oauth-saml.jag?param=2");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
-            in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertNotNull(finalOutput, "Output cannot be null");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
         }
     }
 
@@ -82,17 +100,23 @@ public class SAMLTokenTestCase {
     public void testOauthTokenType() {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
+        BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=3");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/oauth-saml.jag?param=3");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
-            in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertEquals(finalOutput, "Bearer");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
         }
     }
 
@@ -100,17 +124,23 @@ public class SAMLTokenTestCase {
     public void testOauthExpiresIn() {
         ClientConnectionUtil.waitForPort(9763);
         String finalOutput = null;
+        BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/oauth-saml.jag?param=4");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/oauth-saml.jag?param=4");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    jaggeryServerConnection.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
-            in.close();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
             assertEquals(finalOutput, "3600");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
         }
     }
 

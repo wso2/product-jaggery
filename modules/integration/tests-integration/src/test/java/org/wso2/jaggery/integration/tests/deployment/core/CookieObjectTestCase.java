@@ -18,6 +18,8 @@ package org.wso2.jaggery.integration.tests.deployment.core;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jaggeryjs.integration.common.utils.JaggeryIntegrationTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.integration.framework.ClientConnectionUtil;
 
@@ -33,9 +35,18 @@ import static org.testng.Assert.assertNotNull;
 /**
  * Test cases for Cookie Object
  */
-public class CookieObjectTestCase {
+public class CookieObjectTestCase extends JaggeryIntegrationTest {
 
     private static final Log log = LogFactory.getLog(CookieObjectTestCase.class);
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp(){
+        try {
+            init();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 
     @Test(groups = {"jaggery"}, description = "Test Cookie object")
     public void testCookie() {
@@ -43,7 +54,7 @@ public class CookieObjectTestCase {
         String finalOutput = null;
         BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/cookie.jag");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
@@ -67,7 +78,7 @@ public class CookieObjectTestCase {
         String finalOutput = "";
         BufferedReader in = null;
         try {
-            URL jaggeryURL = new URL("http://localhost:9763/testapp/cookie.jag?action=noresource");
+            URL jaggeryURL = new URL(webAppURL + "/testapp/cookie.jag?action=noresource");
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             finalOutput = in.readLine();
