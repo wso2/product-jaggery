@@ -1,0 +1,21 @@
+<%
+
+var param = request.getParameter('action');
+if (param == "noresource") {
+    var url = 'http://localhost:9763/store/api-docs/bootstrap/test/abc/def.jag';
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.setRequestHeader("Content-Type", "text/html");
+    xhr.send();
+
+    var cookieHeader = xhr.getResponseHeader("Set-Cookie");
+    if (cookieHeader != null && cookieHeader.indexOf("JSESSIONID") > -1) {
+        print("true");
+    } else {
+        print("false");
+    }
+} else {
+    print("general");
+}
+
+%>
