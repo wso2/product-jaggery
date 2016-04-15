@@ -434,7 +434,7 @@
         <handlebars.module.version>1.0.0</handlebars.module.version>
         <markdown.module.version>1.0.0</markdown.module.version>
         <gadget.module.version>1.2.0</gadget.module.version>
-        <i18n.module.version>1.4.4-SNAPSHOT</i18n.module.version>
+        <i18n.module.version>1.5.2</i18n.module.version>
         <oauth.module.version>1.2.0</oauth.module.version>
         <process.module.version>1.2.0</process.module.version>
         <uuid.module.version>1.2.0</uuid.module.version>
