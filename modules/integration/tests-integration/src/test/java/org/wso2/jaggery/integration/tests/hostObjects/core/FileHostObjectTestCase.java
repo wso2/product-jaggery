@@ -21,9 +21,7 @@ package org.wso2.jaggery.integration.tests.hostObjects.core;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -170,4 +168,29 @@ public class FileHostObjectTestCase {
           
       }
 
+	@Test(groups = {"jaggery"},
+			description = "Test for get file name operation")
+	public void testGetFileName() {
+		ClientConnectionUtil.waitForPort(9763);
+
+		String finalOutput = null;
+
+		try {
+			URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag?action=checkName");
+			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					jaggeryServerConnection.getInputStream()));
+
+			String inputLine;
+			while ((inputLine = in.readLine()) != null) {
+				finalOutput = inputLine;
+			}
+
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			assertEquals(finalOutput, "name : testfile.txt");
+		}
+	}
 }
