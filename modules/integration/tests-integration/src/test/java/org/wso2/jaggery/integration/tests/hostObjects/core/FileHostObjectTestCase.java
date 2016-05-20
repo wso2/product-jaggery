@@ -21,6 +21,8 @@ package org.wso2.jaggery.integration.tests.hostObjects.core;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -33,152 +35,151 @@ import org.wso2.carbon.integration.framework.ClientConnectionUtil;
  */
 public class FileHostObjectTestCase {
 
+	private static final Log log = LogFactory.getLog(FileHostObjectTestCase.class);
     @Test(groups = {"jaggery"},
           description = "Test for file host object")
     public void testFileExist() {
         ClientConnectionUtil.waitForPort(9763);
-        
+
         String finalOutput = null;
-        
+
         try {
         	URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag");
         	URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
         	BufferedReader in = new BufferedReader(new InputStreamReader(
         			jaggeryServerConnection.getInputStream()));
-        
+
           	String inputLine;
   			while ((inputLine = in.readLine()) != null) {
   				finalOutput = inputLine;
   			}
-			    
+
 			in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 	        assertNotNull(finalOutput, "Result cannot be null");
 		}
-        
+
     }
-    
+
     @Test(groups = {"jaggery"},
             description = "Test for file host object read")
       public void testFile() {
           ClientConnectionUtil.waitForPort(9763);
-          
+
           String finalOutput = null;
-          
+
           try {
           	URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag");
           	URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
           	BufferedReader in = new BufferedReader(new InputStreamReader(
           			jaggeryServerConnection.getInputStream()));
-          
+
           	String inputLine;
   			while ((inputLine = in.readLine()) != null) {
   				finalOutput = inputLine;
   			}
-  
+
   			in.close();
   		} catch (IOException e) {
   			e.printStackTrace();
   		} finally {
   	        assertEquals(finalOutput, "Successfully read testfile.txt");
   		}
-          
+
       }
-    
+
     @Test(groups = {"jaggery"},
             description = "Test for file host object write")
       public void testFileWrite() {
           ClientConnectionUtil.waitForPort(9763);
-          
+
           String finalOutput = null;
-          
+
           try {
           	URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag?action=write");
           	URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
           	BufferedReader in = new BufferedReader(new InputStreamReader(
           			jaggeryServerConnection.getInputStream()));
-          
+
           	String inputLine;
   			while ((inputLine = in.readLine()) != null) {
   				finalOutput = inputLine;
   			}
-  
+
   			in.close();
   		} catch (IOException e) {
   			e.printStackTrace();
   		} finally {
   	        assertEquals(finalOutput, "write was success");
   		}
-          
+
       }
-    
+
     @Test(groups = {"jaggery"},
             description = "Test for file host object operations")
       public void testFileOpertions() {
           ClientConnectionUtil.waitForPort(9763);
-          
+
           String finalOutput = null;
-          
+
           try {
           	URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag?action=test");
           	URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
           	BufferedReader in = new BufferedReader(new InputStreamReader(
           			jaggeryServerConnection.getInputStream()));
-          
+
           	String inputLine;
   			while ((inputLine = in.readLine()) != null) {
   				finalOutput = inputLine;
   			}
-  
+
   			in.close();
   		} catch (IOException e) {
   			e.printStackTrace();
   		} finally {
   	        assertEquals(finalOutput, "length : 30, exists : true, stream : Successfully read testfile.txt");
   		}
-          
+
       }
-    
+
     @Test(groups = {"jaggery"},
             description = "Test for file host object read char")
       public void testFileReadChars() {
           ClientConnectionUtil.waitForPort(9763);
-          
+
           String finalOutput = null;
-          
+
           try {
           	URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag?action=read");
           	URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
           	BufferedReader in = new BufferedReader(new InputStreamReader(
           			jaggeryServerConnection.getInputStream()));
-          
+
           	String inputLine;
   			while ((inputLine = in.readLine()) != null) {
   				finalOutput = inputLine;
   			}
-  
+
   			in.close();
   		} catch (IOException e) {
   			e.printStackTrace();
   		} finally {
   	        assertEquals(finalOutput, "Success");
   		}
-          
+
       }
 
-	@Test(groups = {"jaggery"},
-			description = "Test for get file name operation")
-	public void testGetFileName() {
+	@Test(groups = {"jaggery"}, description = "Test for get file name operation")
+	public void testGetFileName() throws IOException{
 		ClientConnectionUtil.waitForPort(9763);
-
 		String finalOutput = null;
-
+		BufferedReader in = null;
 		try {
 			URL jaggeryURL = new URL("http://localhost:9763/testapp/file.jag?action=checkName");
 			URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
+			in = new BufferedReader(new InputStreamReader(
 					jaggeryServerConnection.getInputStream()));
 
 			String inputLine;
@@ -188,8 +189,9 @@ public class FileHostObjectTestCase {
 
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
+			in.close();
 			assertEquals(finalOutput, "name : testfile.txt");
 		}
 	}
