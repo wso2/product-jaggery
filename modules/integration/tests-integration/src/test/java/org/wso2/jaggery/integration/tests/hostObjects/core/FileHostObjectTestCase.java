@@ -48,12 +48,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in fileExist test method", e);
         } finally {
             in.close();
             assertNotNull(finalOutput, "Result cannot be null");
@@ -70,12 +71,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in fileRead test method", e);
         } finally {
             in.close();
             assertEquals(finalOutput, "Successfully read testfile.txt");
@@ -92,12 +94,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in fileWrite test method", e);
         } finally {
             in.close();
             assertEquals(finalOutput, "write was success");
@@ -114,12 +117,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in fileOperations test method", e);
         } finally {
             in.close();
             assertEquals(finalOutput, "length : 30, exists : true, stream : Successfully read testfile.txt");
@@ -136,12 +140,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in fileReadChar test method", e);
         } finally {
             in.close();
             assertEquals(finalOutput, "Success");
@@ -159,12 +164,13 @@ public class FileHostObjectTestCase {
             URLConnection jaggeryServerConnection = jaggeryURL.openConnection();
             in = new BufferedReader(new InputStreamReader(jaggeryServerConnection.getInputStream()));
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                finalOutput = inputLine;
+            if(in != null) {
+                while ((inputLine = in.readLine()) != null) {
+                    finalOutput = inputLine;
+                }
             }
-            in.close();
         } catch (IOException e) {
-            log.error(e);
+            log.error("Reading InputStream fails in getFileName test method", e);
         } finally {
             in.close();
             assertEquals(finalOutput, "name : testfile.txt");
