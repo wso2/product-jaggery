@@ -186,7 +186,6 @@ public class FileHostObjectTestCase {
 			while ((inputLine = in.readLine()) != null) {
 				finalOutput = inputLine;
 			}
-
 			in.close();
 		} catch (IOException e) {
 			log.error(e);
