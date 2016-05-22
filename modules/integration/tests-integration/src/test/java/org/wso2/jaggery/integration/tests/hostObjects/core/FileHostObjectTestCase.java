@@ -56,7 +56,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in fileExist test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertNotNull(finalOutput, "Result cannot be null");
         }
     }
@@ -79,7 +81,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in fileRead test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertEquals(finalOutput, "Successfully read testfile.txt");
         }
     }
@@ -102,7 +106,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in fileWrite test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertEquals(finalOutput, "write was success");
         }
     }
@@ -125,7 +131,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in fileOperations test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertEquals(finalOutput, "length : 30, exists : true, stream : Successfully read testfile.txt");
         }
     }
@@ -148,7 +156,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in fileReadChar test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertEquals(finalOutput, "Success");
         }
     }
@@ -172,7 +182,9 @@ public class FileHostObjectTestCase {
         } catch (IOException e) {
             log.error("Reading InputStream fails in getFileName test method", e);
         } finally {
-            in.close();
+            if(in != null) {
+                in.close();
+            }
             assertEquals(finalOutput, "name : testfile.txt");
         }
     }
